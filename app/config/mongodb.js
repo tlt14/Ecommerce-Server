@@ -1,18 +1,6 @@
-const mongoose = require('mongoose')
-// const conn = mongoose.createConnection('mongodb://localhost:27017/truong_dev')
-
-// conn.on('connected', () => {
-//   console.log(`Connected to MongoDB `)
-// })
-// conn.on('error', () => {
-//   console.log('MongoDB connection error. Please make sure MongoDB is running.')
-// })
-
-// conn.on('disconnect', () => {
-//   console.log('MongoDB disconnected')
-// })
-// module.exports = conn
+const mongoose = require("mongoose");
 
 mongoose
-  .connect('mongodb://127.0.0.1:27017/truong_dev')
-  .then(() => console.log('Connected!'))
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("Connected!"))
+  .catch((err) => console.log(err));
