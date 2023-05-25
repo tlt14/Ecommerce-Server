@@ -14,10 +14,7 @@ app.use(bodyParser.json());
 // cors
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://ecommerce-liard-delta.vercel.app/",
-    ],
+    origin: "https://ecommerce-liard-delta.vercel.app",
     credentials: true,
   })
 );
