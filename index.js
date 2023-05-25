@@ -11,13 +11,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+var whitelist = [
+  "https://ecommerce-tlt14.vercel.app/",
+  "https://ecommerce-git-main-tlt14.vercel.app/",
+  "https://ecommerce-liard-delta.vercel.app/",
+  "http://localhost:3000",
+];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
 // cors
-app.use(
-  cors({
-    origin: "https://ecommerce-tlt14.vercel.app/",
-    credentials: true,
-  })
-);
+app.use(cors(corsOptions));
 // cookie parser
 app.use(cookieParser());
 // routes

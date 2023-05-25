@@ -71,7 +71,9 @@ exports.logout = async (req, res) => {
   // Xóa cookie
   res.cookie("token", "", {
     httpOnly: true,
-    sameSite: "None",
+    secure: true,
+    sameSite: "none",
+    expires: new Date(1),
   });
   res.status(200).json({ message: "Đăng xuất thành công" });
 };
