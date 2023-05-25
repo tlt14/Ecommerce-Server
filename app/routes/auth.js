@@ -8,7 +8,7 @@ router.post("/signup", authController.signup);
 
 // Đăng nhập
 router.post("/login", authController.login);
-router.get("/profile", verifyToken, authController.profile);
 router.get("/logout", verifyToken, authController.logout);
+router.get("/profile", verifyToken, authController.profile);
 router.post("/register", authController.signup);
 module.exports = router;

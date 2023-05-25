@@ -67,8 +67,11 @@ exports.profile = async (req, res) => {
   res.json({ user: req.user });
 };
 
-exports.logout = (req, res) => {
-  // Xóa cookie chứa token
-  res.clearCookie("token");
+exports.logout = async (req, res) => {
+  // Xóa cookie
+  res.cookie("token", "", {
+    httpOnly: true,
+    sameSite: "None",
+  });
   res.status(200).json({ message: "Đăng xuất thành công" });
 };
