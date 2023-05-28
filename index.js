@@ -5,9 +5,12 @@ const port = 4000;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 require("./app/config/mongodb.js");
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // parse application/json
 app.use(bodyParser.json());
